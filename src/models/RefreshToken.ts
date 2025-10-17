@@ -16,6 +16,7 @@ class RefreshToken extends Model<
 > {
   declare id: CreationOptional<string>
   declare userId: string
+  declare expiresAt: Date
 
   static associate() {
     RefreshToken.belongsTo(User, {
@@ -34,6 +35,10 @@ RefreshToken.init(
     },
     userId: {
       type: DataTypes.UUID,
+      allowNull: false,
+    },
+    expiresAt: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
   },

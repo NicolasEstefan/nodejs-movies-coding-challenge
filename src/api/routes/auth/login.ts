@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import { login as coreLogin } from '../../../core/auth/login'
+import { LoginParams } from '../../../schemas/auth'
 
 export const login = async (
   req: Request,
@@ -7,7 +8,7 @@ export const login = async (
   next: NextFunction
 ) => {
   try {
-    const loginResult = await coreLogin(req.body)
+    const loginResult = await coreLogin(req.validatedBody as LoginParams)
 
     res.cookie('access-token', loginResult.accessToken.token, {
       httpOnly: true,
@@ -17,6 +18,7 @@ export const login = async (
 
     res.cookie('refresh-token', loginResult.refreshToken.token, {
       httpOnly: true,
+      path: '/api/auth/refresh',
       secure: process.env.NODE_ENV === 'production',
       maxAge: loginResult.refreshToken.maxAgeSeconds * 1000,
     })

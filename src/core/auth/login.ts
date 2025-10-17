@@ -28,12 +28,8 @@ export const login = async (params: LoginParams): Promise<LoginResult> => {
     throw new APIError(ErrorCode.UNAUTHORIZED, 'Invalid credentials')
   }
 
-  const refreshToken = await RefreshtokenRepository.create({
-    userId: user.id,
-  })
-
   return {
     accessToken: generateAccessToken(user.id),
-    refreshToken: generateRefreshToken(refreshToken.id),
+    refreshToken: await generateRefreshToken(user.id),
   }
 }

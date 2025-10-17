@@ -7,8 +7,8 @@ const envVars = z.object({
   DB_PASSWORD: z.string().nonempty(),
   DB_NAME: z.string().nonempty(),
   DB_PORT: z.string().nonempty(),
-  CACHE_PORT: z.string().nonempty(),
   SERVER_SECRET: z.string().nonempty(),
+  TMDB_API_TOKEN: z.string().nonempty(),
 })
 
 const validateEnv = () => {

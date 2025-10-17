@@ -1,4 +1,6 @@
 import jwt from 'jsonwebtoken'
+import { RefreshtokenRepository } from '../../repository/refresh-tokens'
+import dayjs from 'dayjs'
 
 export const generateAccessToken = (userId: string) => {
   const maxAgeSeconds = 60 * 3 // 3 minutes
@@ -10,13 +12,22 @@ export const generateAccessToken = (userId: string) => {
   }
 }
 
-export const generateRefreshToken = (refreshTokenId: string) => {
+export const generateRefreshToken = async (userId: string) => {
   const maxAgeSeconds = 60 * 60 * 24 * 7 // 7 days
 
+  const refreshToken = await RefreshtokenRepository.create({
+    userId,
+    expiresAt: dayjs().add(maxAgeSeconds, 'seconds').toDate(),
+  })
+
   return {
-    token: jwt.sign({ refreshTokenId }, process.env.SERVER_SECRET!, {
-      expiresIn: maxAgeSeconds,
-    }),
+    token: jwt.sign(
+      { refreshTokenId: refreshToken.id },
+      process.env.SERVER_SECRET!,
+      {
+        expiresIn: maxAgeSeconds,
+      }
+    ),
     maxAgeSeconds,
   }
 }

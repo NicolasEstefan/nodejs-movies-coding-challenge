@@ -20,3 +20,17 @@ export const loginValidationSchema = {
 }
 
 export type LoginParams = z.infer<typeof loginValidationSchema.body>
+
+export const refreshValidationSchema = {
+  cookies: z.object({
+    'refresh-token': z.string().nonempty(),
+  }),
+}
+
+export type RefreshParams = z.infer<typeof refreshValidationSchema.cookies>
+
+export const logoutValidationSchema = {
+  cookies: z.object({
+    'refresh-token': z.string().optional(),
+  }),
+}
