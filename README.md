@@ -23,6 +23,11 @@ DB_PASSWORD=your_password_here
 # Server Configuration
 PORT=3000
 SERVER_SECRET=your_secret_key_here
+
+# TMDB API Configuration
+TMDB_API_TOKEN=your_api_token
+TMDB_IMAGE_URL=https://image.tmdb.org/t/p/w500
+TMDB_SEARCH_MOVIES_URL=https://api.themoviedb.org/3/search/movie
 ```
 
 ### 2. Run with Docker Compose
