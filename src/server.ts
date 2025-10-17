@@ -21,7 +21,7 @@ server.use(notFoundHandler)
 server.use(errorHandler)
 
 // This is only for prototyping, migrations would be needed for a larger project
-db.sync({ force: true }).then(() => {
+db.sync({ alter: true }).then(() => {
   server.listen(process.env.PORT, () => {
     console.log(`Server running on port ${process.env.PORT}`)
   })

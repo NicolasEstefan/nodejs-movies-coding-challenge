@@ -1,10 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { APIError, ErrorCode } from '../../util/error'
 
-export const notFoundHandler = (
-  req: Request,
-  res: Response,
-) => {
+export const notFoundHandler = (req: Request, res: Response) => {
   throw new APIError(ErrorCode.NOT_FOUND, 'Not found')
 }
 

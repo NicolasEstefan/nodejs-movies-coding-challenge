@@ -10,6 +10,33 @@ services:
       - '${DB_PORT}:5432'
     volumes:
       - movies-pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${DB_USERNAME} -d ${DB_NAME}']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+    container_name: movies-app
+    ports:
+      - '${PORT}:${PORT}'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      DB_HOST: dev-db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      SERVER_SECRET: ${SERVER_SECRET}
+      PORT: ${PORT}
+    depends_on:
+      dev-db:
+        condition: service_healthy
+    command: npm run dev
 
 volumes:
   movies-pg-data:

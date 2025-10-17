@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "b38a2c17-c209-4430-8259-3e1db9a1b6bd",
+		"name": "nodejs-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13779005"
+	},
+	"item": [
+		{
+			"name": "Errors",
+			"item": [
+				{
+					"name": "Not found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{nodejs-challenge-url}}/api/sadasd",
+							"host": [
+								"{{nodejs-challenge-url}}"
+							],
+							"path": [
+								"api",
+								"sadasd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Endpoints",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Signup",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"nico\",\n  \"email\": \"nico@test.com\",\n  \"password\": \"nico12345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{nodejs-challenge-url}}/api/auth/signup",
+									"host": [
+										"{{nodejs-challenge-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"nico@test.com\",\n  \"password\": \"nico12345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{nodejs-challenge-url}}/api/auth/login",
+									"host": [
+										"{{nodejs-challenge-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{nodejs-challenge-url}}/api/auth/logout",
+									"host": [
+										"{{nodejs-challenge-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{nodejs-challenge-url}}/api/auth/refresh",
+									"host": [
+										"{{nodejs-challenge-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Movies",
+					"item": [
+						{
+							"name": "Search",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{nodejs-challenge-url}}/api/movies/search?query=minecraft&page=1",
+									"host": [
+										"{{nodejs-challenge-url}}"
+									],
+									"path": [
+										"api",
+										"movies",
+										"search"
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "minecraft"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "TMDB",
+			"item": [
+				{
+					"name": "Search movies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{tmdb-access-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.themoviedb.org/3/search/movie?query=james bond&page=2",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"search",
+								"movie"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "james bond"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get image",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

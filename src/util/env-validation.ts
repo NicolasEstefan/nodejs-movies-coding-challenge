@@ -9,6 +9,8 @@ const envVars = z.object({
   DB_PORT: z.string().nonempty(),
   SERVER_SECRET: z.string().nonempty(),
   TMDB_API_TOKEN: z.string().nonempty(),
+  TMDB_SEARCH_MOVIES_URL: z.string().nonempty(),
+  TMDB_IMAGE_URL: z.string().nonempty(),
 })
 
 const validateEnv = () => {

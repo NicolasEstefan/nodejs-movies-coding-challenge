@@ -12,7 +12,9 @@ export const logout = async (
     }
 
     res.clearCookie('access-token')
-    res.clearCookie('refresh-token')
+    res.clearCookie('refresh-token', {
+      path: '/api/auth/refresh',
+    })
 
     res.send()
   } catch (error) {
