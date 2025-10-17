@@ -15,8 +15,7 @@ Create a `.env` file in the project root with the following variables:
 
 ```env
 # Database Configuration
-DB_HOST=localhost
-DB_PORT=5432
+DB_PORT=5432 # Port to expose to the host system
 DB_NAME=movies_db
 DB_USERNAME=postgres
 DB_PASSWORD=your_password_here
