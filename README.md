@@ -35,7 +35,7 @@ TMDB_SEARCH_MOVIES_URL=https://api.themoviedb.org/3/search/movie
 Start the development server and PostgreSQL database:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 The API will be available at `http://localhost:3000` (or the port specified in your `.env` file).
